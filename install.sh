@@ -7,10 +7,14 @@ if [[ ! -d "$OH_MY_ZSH_PATH" ]]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-POWERLEVEL10K_PATH="${ZSH_CUSTOM:-$OH_MY_ZSH_PATH/custom}/themes/powerlevel10k"
-if [[ ! -d "$POWERLEVEL10K_PATH" ]]; then
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$POWERLEVEL10K_PATH"
+P10K_PATH="${ZSH_CUSTOM:-$OH_MY_ZSH_PATH/custom}/themes/powerlevel10k"
+if [[ ! -d "$P10K_PATH" ]]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$P10K_PATH"
 fi
+
+P10K_ZSH_PATH="$HOME/.p10k.zsh"
+rm -f "$P10K_ZSH_PATH"
+ln -sf "$DIR/.p10k.zsh" "$P10K_ZSH_PATH"
 
 ZSHRC_PATH="$HOME/.zshrc"
 rm -f "$ZSHRC_PATH"
